@@ -15,8 +15,8 @@ async function getStatus(e) {
   } else {
     displayException(data);
     throw new Error(data.error);
-  };
-};
+  }
+}
 
 function displayStatus(data) {
   let heading = "API Key Status";
@@ -25,20 +25,20 @@ function displayStatus(data) {
   document.getElementById("resultsModalTitle").innerText = heading;
   document.getElementById("results-content").innerText = results;
   resultsModal.show();
-};
+}
 
 function processOptions(form) {
   let optArray = [];
   for (let entry of form.entries()) {
     if (entry[0] === "options") {
       optArray.push(entry[1]);
-    };
-  };
+    }
+  }
 
   form.delete("options");
   form.append("options", optArray.join());
   return form;
-};
+}
 
 async function postForm(e) {
   const form = processOptions(new FormData(document.getElementById("checksform")));
@@ -57,8 +57,8 @@ async function postForm(e) {
   } else {
     displayException(data);
     throw new Error(data.error);
-  };
-};
+  }
+}
 
 function displayErrors(data) {
   let heading = `JSHint results for ${data.file}`;
@@ -71,12 +71,12 @@ function displayErrors(data) {
       results += `<div>At line <span class="line_number">${error.line}</span>,`;
       results += `column <span class="column">${error.col}</span></div>`;
       results += `<div class="error">${error.error}</div>`;
-    };
-  };
+    }
+  }
   document.getElementById("resultsModalTitle").innerText = heading;
   document.getElementById("results-content").innerHTML = results;
   resultsModal.show();
-};
+}
 
 function displayException(data) {
   let heading = `An Exception Error has Occured`;
@@ -88,4 +88,4 @@ function displayException(data) {
   document.getElementById("resultsModalTitle").innerText = heading;
   document.getElementById("results-content").innerHTML = results;
   resultsModal.show();
-};
+}
